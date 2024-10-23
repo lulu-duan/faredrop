@@ -1,0 +1,15 @@
+{
+    "isort.args": [
+        "--profile",
+        "black",
+        "--settings-path",
+        "/Users/luluduan/Documents/repositories/roamance/src/backend/pyproject.toml"
+    ],
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.black-formatter",
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": "explicit"
+        }
+    }
+}
