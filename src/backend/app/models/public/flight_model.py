@@ -31,4 +31,4 @@ class Flight(FlightBase, table=True):
     """
 
     __tablename__ = "flight"
-    __table_args__: ClassVar = {"schema": "aviation"}
+    __table_args__: ClassVar = {"schema": "public"}

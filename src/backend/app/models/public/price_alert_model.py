@@ -1,7 +1,7 @@
 from datetime import datetime
-from typing import Optional, ClassVar
+from typing import ClassVar, Optional
 
-from sqlmodel import SQLModel, Field, Column, Integer, ForeignKeyConstraint
+from sqlmodel import Column, Field, ForeignKeyConstraint, Integer, SQLModel
 
 
 class PriceAlertBase(SQLModel):
@@ -35,13 +35,13 @@ class PriceAlert(PriceAlertBase, table=True):
     __tablename__ = "price_alert"
     __table_args__: ClassVar = (
         ForeignKeyConstraint(
-            ["user_id"], ["auth.user.id"], ondelete="CASCADE", onupdate="CASCADE"
+            ["user_id"], ["public.user.id"], ondelete="CASCADE", onupdate="CASCADE"
         ),
         ForeignKeyConstraint(
             ["flight_id"],
-            ["aviation.flight.id"],
+            ["public.flight.id"],
             ondelete="NO ACTION",
             onupdate="CASCADE",
         ),
-        {"schema": "alert"},
+        {"schema": "public"},
     )

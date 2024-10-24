@@ -1,7 +1,13 @@
-from .alert import PriceAlert, PriceAlertBase
-from .auth import User, UserBase
-from .aviation import Flight, FlightBase
-from .transaction import HistoricalPrice, HistoricalPriceBase
+from .public import (
+    Flight,
+    FlightBase,
+    HistoricalPrice,
+    HistoricalPriceBase,
+    PriceAlert,
+    PriceAlertBase,
+    User,
+    UserBase,
+)
 
 __all__ = (
     "FlightBase",

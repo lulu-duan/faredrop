@@ -1,8 +1,8 @@
 from datetime import datetime
-from typing import Optional, ClassVar
+from typing import ClassVar, Optional
 
 from pydantic import EmailStr
-from sqlmodel import SQLModel, Field
+from sqlmodel import Field, SQLModel
 
 
 class UserBase(SQLModel):
@@ -27,7 +27,7 @@ class User(UserBase, table=True):
     """
 
     __tablename__ = "user"
-    __table_args__: ClassVar = {"schema": "auth"}
+    __table_args__: ClassVar = {"schema": "public"}
     hashed_password: str | None = Field(
         nullable=False, index=True, description="Hashed password of the user"
     )
