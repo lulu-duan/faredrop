@@ -11,7 +11,7 @@ line_length = 88
 name = "app"
 version = "0.1.0"
 description = "Roamance is an application designed to monitor flight prices, flight statuses, and alert users of relevant information."
-authors = ["Lulu Duan luxiangduan@gmail.com"]
+authors = ["Lulu Duan <luxiangduan@gmail.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.9"
