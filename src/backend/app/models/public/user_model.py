@@ -2,7 +2,7 @@ from datetime import datetime
 from typing import ClassVar, Optional
 
 from pydantic import EmailStr
-from sqlmodel import Field, SQLModel
+from sqlmodel import Field, SQLModel, UniqueConstraint
 
 
 class UserBase(SQLModel):
@@ -35,7 +35,11 @@ class User(UserBase, table=True):
     """
 
     __tablename__ = "user"
-    __table_args__: ClassVar = {"schema": "public"}
+    __table_args__: ClassVar = (
+        {"schema": "public"},
+        UniqueConstraint("username", name="unique_username"),
+        UniqueConstraint("email", name="unique_email"),
+    )
     password: str = Field(
         nullable=False, index=True, description="Hashed password of the user"
     )
