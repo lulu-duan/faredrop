@@ -1,0 +1,45 @@
+Table public.user {
+    id SERIAL [pk]
+    name VARCHAR [null]
+    username VARCHAR [not null]
+    email VARCHAR [not null]
+    created_at TIMESTAMP [default: `CURRENT_TIMESTAMP`, not null]
+    updated_at TIMESTAMP [default: `CURRENT_TIMESTAMP`, not null]
+    password VARCHAR [not null]
+}
+
+Table public.flight {
+    id SERIAL [pk]
+    flight_number VARCHAR [not null]
+    name VARCHAR [null]
+    origin VARCHAR [not null]
+    destination VARCHAR [not null]
+    status VARCHAR [null]
+    departure_time TIMESTAMP [null]
+    arrival_time TIMESTAMP [null]
+    price DECIMAL [null]
+    created_at TIMESTAMP [default: `CURRENT_TIMESTAMP`, not null]
+    updated_at TIMESTAMP [default: `CURRENT_TIMESTAMP`, not null]
+}
+
+Table public.price_alert {
+    id SERIAL [pk]
+    user_id INTEGER [not null]
+    flight_id INTEGER [not null]
+    threshold DECIMAL [not null]
+    status BOOLEAN [not null]
+    created_at TIMESTAMP [default: `CURRENT_TIMESTAMP`, not null]
+    updated_at TIMESTAMP [default: `CURRENT_TIMESTAMP`, not null]
+}
+
+Ref: public.price_alert.user_id > public.user.id [delete: cascade, update: cascade]
+Ref: public.price_alert.flight_id > public.flight.id [delete: cascade, update: cascade]
+
+Table public.historical_price {
+    id SERIAL [pk]
+    flight_id INTEGER [null]
+    price DECIMAL [not null]
+    timestamp TIMESTAMP [not null]
+}
+
+Ref: public.historical_price.flight_id > public.flight.id [delete: none, update: cascade]
