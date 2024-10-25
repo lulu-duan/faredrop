@@ -10,12 +10,12 @@ from .public import (
 )
 
 __all__ = (
-    "FlightBase",
     "Flight",
-    "HistoricalPriceBase",
+    "FlightBase",
     "HistoricalPrice",
-    "PriceAlertBase",
+    "HistoricalPriceBase",
     "PriceAlert",
-    "UserBase",
+    "PriceAlertBase",
     "User",
+    "UserBase",
 )

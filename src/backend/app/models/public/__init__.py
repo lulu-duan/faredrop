@@ -4,12 +4,12 @@ from ..public.price_alert_model import PriceAlert, PriceAlertBase
 from ..public.user_model import User, UserBase
 
 __all__ = (
-    "FlightBase",
     "Flight",
-    "HistoricalPriceBase",
+    "FlightBase",
     "HistoricalPrice",
-    "PriceAlertBase",
+    "HistoricalPriceBase",
     "PriceAlert",
-    "UserBase",
+    "PriceAlertBase",
     "User",
+    "UserBase",
 )

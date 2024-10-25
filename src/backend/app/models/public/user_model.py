@@ -14,8 +14,13 @@ class UserBase(SQLModel):
     name: str = Field(description="Name of the user")
     username: str = Field(description="Username of the user")
     email: EmailStr = Field(description="Email of the user")
-    created_at: datetime = Field(default=datetime.now(), description="Created at")
-    updated_at: datetime = Field(default=datetime.now(), description="Updated at")
+    created_at: datetime = Field(
+        default=datetime.now(), description="The timestamp the user record was created"
+    )
+    updated_at: datetime = Field(
+        default=datetime.now(),
+        description="The timestamp the user record was last updated",
+    )
 
 
 class User(UserBase, table=True):

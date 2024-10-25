@@ -1,7 +1,7 @@
 from datetime import datetime
-from typing import Optional, ClassVar
+from typing import ClassVar, Optional
 
-from sqlmodel import SQLModel, Field
+from sqlmodel import Field, SQLModel
 
 
 class FlightBase(SQLModel):
@@ -15,11 +15,17 @@ class FlightBase(SQLModel):
     origin: str = Field(description="Departure airport code")
     destination: str = Field(description="Arrival airport code")
     status: str = Field(description="Status of the flight")
-    departure_time: datetime = Field(description="Departure time")
-    arrival_time: datetime = Field(description="Arrival time")
+    departure_time: datetime = Field(description="Departure time of the flight")
+    arrival_time: datetime = Field(description="Arrival time of the flight")
     price: float = Field(description="Current price of the flight")
-    created_at: datetime = Field(default=datetime.now(), description="Created at")
-    updated_at: datetime = Field(default=datetime.now(), description="Updated at")
+    created_at: datetime = Field(
+        default=datetime.now(),
+        description="The timestamp the flight record was created",
+    )
+    updated_at: datetime = Field(
+        default=datetime.now(),
+        description="The timestamp the flight record was last updated",
+    )
 
 
 class Flight(FlightBase, table=True):

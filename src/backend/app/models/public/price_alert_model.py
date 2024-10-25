@@ -20,8 +20,14 @@ class PriceAlertBase(SQLModel):
     )
     threshold: float = Field(description="Price to trigger the alert")
     status: bool = Field(description="Status of the alert")
-    created_at: datetime = Field(default=datetime.now(), description="Created at")
-    updated_at: datetime = Field(default=datetime.now(), description="Updated at")
+    created_at: datetime = Field(
+        default=datetime.now(),
+        description="The timestamp the price alert record was created",
+    )
+    updated_at: datetime = Field(
+        default=datetime.now(),
+        description="The timestamp the price alert record was last updated",
+    )
 
 
 class PriceAlert(PriceAlertBase, table=True):
