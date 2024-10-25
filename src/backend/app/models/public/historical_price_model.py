@@ -14,8 +14,10 @@ class HistoricalPriceBase(SQLModel):
         sa_column=Column(Integer, nullable=True, default=None),
         description="Foreign key to the flight being monitored",
     )
-    price: float = Field(description="Price of the flight at the given time")
-    timestamp: datetime = Field(description="Timestamp of the price")
+    price: float = Field(
+        description="Price of the flight at the given time", nullable=False
+    )
+    timestamp: datetime = Field(description="Timestamp of the price", nullable=False)
 
 
 class HistoricalPrice(HistoricalPriceBase, table=True):

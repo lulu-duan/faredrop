@@ -10,21 +10,27 @@ class FlightBase(SQLModel):
     """
 
     id: Optional[int] = Field(default=None, primary_key=True)
-    flight_number: str = Field(description="Flight number")
-    name: str = Field(description="Name of the flight")
-    origin: str = Field(description="Departure airport code")
-    destination: str = Field(description="Arrival airport code")
-    status: str = Field(description="Status of the flight")
-    departure_time: datetime = Field(description="Departure time of the flight")
-    arrival_time: datetime = Field(description="Arrival time of the flight")
-    price: float = Field(description="Current price of the flight")
+    flight_number: str = Field(description="Flight number", nullable=False)
+    name: str = Field(description="Name of the flight", nullable=True)
+    origin: str = Field(description="Departure airport code", nullable=False)
+    destination: str = Field(description="Arrival airport code", nullable=False)
+    status: str = Field(description="Status of the flight", nullable=True)
+    departure_time: datetime = Field(
+        description="Departure time of the flight", nullable=True
+    )
+    arrival_time: datetime = Field(
+        description="Arrival time of the flight", nullable=True
+    )
+    price: float = Field(description="Current price of the flight", nullable=True)
     created_at: datetime = Field(
         default=datetime.now(),
         description="The timestamp the flight record was created",
+        nullable=False,
     )
     updated_at: datetime = Field(
         default=datetime.now(),
         description="The timestamp the flight record was last updated",
+        nullable=False,
     )
 
 

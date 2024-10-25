@@ -11,15 +11,18 @@ class UserBase(SQLModel):
     """
 
     id: Optional[int] = Field(default=None, primary_key=True)
-    name: str = Field(description="Name of the user")
-    username: str = Field(description="Username of the user")
-    email: EmailStr = Field(description="Email of the user")
+    name: str = Field(description="Name of the user", nullable=True)
+    username: str = Field(description="Username of the user", nullable=False)
+    email: EmailStr = Field(description="Email of the user", nullable=False)
     created_at: datetime = Field(
-        default=datetime.now(), description="The timestamp the user record was created"
+        default=datetime.now(),
+        description="The timestamp the user record was created",
+        nullable=False,
     )
     updated_at: datetime = Field(
         default=datetime.now(),
         description="The timestamp the user record was last updated",
+        nullable=False,
     )
 
 
@@ -33,6 +36,6 @@ class User(UserBase, table=True):
 
     __tablename__ = "user"
     __table_args__: ClassVar = {"schema": "public"}
-    hashed_password: str | None = Field(
+    password: str = Field(
         nullable=False, index=True, description="Hashed password of the user"
     )

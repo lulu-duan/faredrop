@@ -11,22 +11,24 @@ class PriceAlertBase(SQLModel):
 
     id: Optional[int] = Field(default=None, primary_key=True)
     user_id: int = Field(
-        sa_column=Column(Integer, nullable=True, default=None),
+        sa_column=Column(Integer, nullable=False, default=None),
         description="Foreign key to the user who created the alert",
     )
     flight_id: int = Field(
-        sa_column=Column(Integer, nullable=True, default=None),
+        sa_column=Column(Integer, nullable=False, default=None),
         description="Foreign key to the flight being monitored",
     )
-    threshold: float = Field(description="Price to trigger the alert")
-    status: bool = Field(description="Status of the alert")
+    threshold: float = Field(description="Price to trigger the alert", nullable=False)
+    status: bool = Field(description="Status of the alert", nullable=False)
     created_at: datetime = Field(
         default=datetime.now(),
         description="The timestamp the price alert record was created",
+        nullable=False,
     )
     updated_at: datetime = Field(
         default=datetime.now(),
         description="The timestamp the price alert record was last updated",
+        nullable=False,
     )
 
 
@@ -41,12 +43,12 @@ class PriceAlert(PriceAlertBase, table=True):
     __tablename__ = "price_alert"
     __table_args__: ClassVar = (
         ForeignKeyConstraint(
-            ["user_id"], ["public.user.id"], ondelete="NO ACTION", onupdate="CASCADE"
+            ["user_id"], ["public.user.id"], ondelete="CASCADE", onupdate="CASCADE"
         ),
         ForeignKeyConstraint(
             ["flight_id"],
             ["public.flight.id"],
-            ondelete="NO ACTION",
+            ondelete="CASCADE",
             onupdate="CASCADE",
         ),
         {"schema": "public"},
