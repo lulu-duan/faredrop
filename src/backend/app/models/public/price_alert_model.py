@@ -41,7 +41,7 @@ class PriceAlert(PriceAlertBase, table=True):
     __tablename__ = "price_alert"
     __table_args__: ClassVar = (
         ForeignKeyConstraint(
-            ["user_id"], ["public.user.id"], ondelete="CASCADE", onupdate="CASCADE"
+            ["user_id"], ["public.user.id"], ondelete="NO ACTION", onupdate="CASCADE"
         ),
         ForeignKeyConstraint(
             ["flight_id"],

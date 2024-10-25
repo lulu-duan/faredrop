@@ -1,7 +1,7 @@
 from datetime import datetime
-from typing import Optional, ClassVar
+from typing import ClassVar, Optional
 
-from sqlmodel import SQLModel, Field, Column, Integer, ForeignKeyConstraint
+from sqlmodel import Column, Field, ForeignKeyConstraint, Integer, SQLModel
 
 
 class HistoricalPriceBase(SQLModel):
@@ -31,7 +31,7 @@ class HistoricalPrice(HistoricalPriceBase, table=True):
         ForeignKeyConstraint(
             ["flight_id"],
             ["public.flight.id"],
-            ondelete="CASCADE",
+            ondelete="NO ACTION",
             onupdate="CASCADE",
         ),
         {"schema": "public"},
