@@ -1,3 +1,3 @@
-# Roamance
+# FareDrop
 
-Roamance is an application designed to monitor flight prices, flight statuses, and alert users of relevant information.
+FareDrop is an application designed to monitor flight prices, flight statuses, and alert users of relevant information.
